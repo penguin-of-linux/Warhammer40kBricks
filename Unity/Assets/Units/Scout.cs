@@ -25,4 +25,9 @@ public class Scout : CombatMovableUnit
     {
         get { return 0.5; }
     }
+
+    public override int FramesToProduce
+    {
+        get { return 5; }
+    }
 }

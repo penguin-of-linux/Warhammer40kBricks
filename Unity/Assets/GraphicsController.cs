@@ -32,9 +32,9 @@ public class GraphicsController : MonoBehaviour
 
             var obj = _objects[unit.Id];
 
-            if (unit is IBuilding)
+            if (unit is IBuildingUnit)
             {
-                var building = unit as IBuilding;
+                var building = unit as IBuildingUnit;
                 obj.transform.position = (unit.Position + new Geometry.Vector2(building.Width, building.Height) * 0.5)
                     .ToUnityVector3();
             }
@@ -67,6 +67,7 @@ public class GraphicsController : MonoBehaviour
         plane.transform.position = new Vector3(w / 2 * 10, 0, h / 2 * 10);
         plane.name = "ground";
         plane.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+        plane.AddComponent<PlayerController>();
     }
 
     private GameObject CreateGameObject(Unit unit)
@@ -76,15 +77,16 @@ public class GraphicsController : MonoBehaviour
         if (unit is Scout)
             result = GameObject.Instantiate(_legomanPrefab);
 
-        if (unit is Building)
+        if (unit is IBuildingUnit)
         {
             result = GameObject.Instantiate(_monasteryPrefab);
-            var building = unit as Building;
+            var building = unit as IBuildingUnit;
         }
 
         if (result == null)
             throw new NotSupportedException(string.Format("Unit type {0} not supported", unit.GetType()));
 
+        result.AddComponent<PlayerController>();
         result.name = unit.Id.ToString();
 
         return result;

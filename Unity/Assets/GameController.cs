@@ -24,17 +24,20 @@ public class GameController : MonoBehaviour
 
         GameState.AddUnit(new Monastery(1), new Geometry.Vector2(25, 25), 100);
 
-        Engine = new Engine();
+        Engine = new Engine(new UnitCreator());
 	    _lastStateUpdate = DateTime.Now;
 
         // Other scripts enabling
 	    GameObject.Find("GraphicsController").GetComponent<GraphicsController>().enabled = true;
-	    GameObject.Find("PlayerController").GetComponent<PlayerController>().enabled = true;
+	    //GameObject.Find("PlayerController").GetComponent<PlayerController>().enabled = true;
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
 	{
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
+
 	    //Debug.Log(1 / Time.deltaTime);
 
         if (DateTime.Now - _lastStateUpdate >= _updatePeriod)

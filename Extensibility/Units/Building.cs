@@ -2,7 +2,7 @@
 {
     public abstract class BuildingUnit : Unit,  IBuildingUnit
     {
-        public BuildingUnit(int id) : base(id)
+        protected BuildingUnit(int id) : base(id)
         {
         }
 

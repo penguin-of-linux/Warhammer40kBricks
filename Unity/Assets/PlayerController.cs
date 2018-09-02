@@ -1,38 +1,55 @@
 ﻿using System.Collections.Generic;
-
 using UnityEngine;
 
 using Extensibility;
+using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPointerClickHandler
 {
-    public List<Unit> SelectedUnits;
+    public static List<Unit> SelectedUnits = new List<Unit>();
 
-    void Start()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        SelectedUnits = new List<Unit>();
+        switch (eventData.pointerPress.transform.name)
+        {
+            case "Panel":
+                OnPanelPointerClick(eventData);
+                break;
+
+            case "ground":
+                OnGroundPointerClick(eventData);
+                break;
+
+            default:
+                OnUnitPointerClick(eventData);
+                break;
+        }
     }
 
-    void Update()
+    private void OnUnitPointerClick(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-            {
-                Debug.Log(hit.transform.name);
-                int id;
-                if (int.TryParse(hit.transform.name, out id))
-                {
-                    SelectedUnits.Clear();
-                    SelectedUnits.Add(GameController.GameState.GetUnit(id));
-                    return;
-                }
+        Debug.Log("Unit click");
 
-                if (hit.transform.name == "ground" && SelectedUnits.Count > 0)
-                    GameController.Engine.SetUnitsMovingTo(
-                        GameController.GameState, SelectedUnits, hit.point.ToGeometryVector2());
-            }
-        }
+        var id = int.Parse(eventData.pointerPress.transform.name);
+        SelectedUnits.Clear();
+        SelectedUnits.Add(GameController.GameState.GetUnit(id));
+    }
+
+    private void OnGroundPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Ground click");
+
+        RaycastHit hit;
+        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+
+        GameController.Engine.SetUnitsMovingTo(
+            GameController.GameState, 
+            SelectedUnits, 
+            hit.point.ToGeometryVector2());
+    }
+
+    private void OnPanelPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Panel click");
     }
 }

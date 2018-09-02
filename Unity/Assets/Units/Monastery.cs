@@ -1,6 +1,6 @@
 ﻿using Extensibility;
 
-public class Monastery : Building
+public class Monastery : BuildingUnit
 {
     public Monastery(int id) : base(id)
     {
@@ -14,5 +14,10 @@ public class Monastery : Building
     public override int Height
     {
         get { return 40; }
+    }
+
+    public override int FramesToProduce
+    {
+        get { return 10; }
     }
 }

@@ -430,7 +430,10 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-Unity/output/*
+Unity/*_Data
 Unity/Library/*
+*.exe
+*.dll
+Unity/Games/Warhammer40kBricks/AssetBundles/*
 
 Press h to open a hovercard with more details.

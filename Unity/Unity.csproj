@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -221,6 +223,9 @@
     <Reference Include="Geometry">
       <HintPath>Assets/lib/Geometry.dll</HintPath>
     </Reference>
+    <Reference Include="UnityGame">
+      <HintPath>Assets/lib/UnityGame.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/khapov/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -229,18 +234,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraController.cs" />
-    <Compile Include="Assets\GameController.cs" />
+    <Compile Include="Assets\Container\Container.cs" />
+    <Compile Include="Assets\Controllers\CameraController.cs" />
+    <Compile Include="Assets\Controllers\GameController.cs" />
+    <Compile Include="Assets\Controllers\GraphicsController.cs" />
+    <Compile Include="Assets\Controllers\PlayerController.cs" />
+    <Compile Include="Assets\EntryPoint.cs" />
+    <Compile Include="Assets\GameProvider.cs" />
     <Compile Include="Assets\GeometryVector2Extensions.cs" />
-    <Compile Include="Assets\GraphicsController.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
-    <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Rules.cs" />
-    <Compile Include="Assets\UnitCreator.cs" />
-    <Compile Include="Assets\Units\Monastery.cs" />
-    <Compile Include="Assets\Units\Scout.cs" />
+    <Compile Include="Assets\ServcieProviderExtensions.cs" />
     <Compile Include="Assets\UnityVector2Extensions.cs" />
     <Compile Include="Assets\UnityVector3Extensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\NuGet\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

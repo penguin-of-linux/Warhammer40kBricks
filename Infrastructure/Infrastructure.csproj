@@ -51,6 +51,10 @@
       <Project>{eb34ca7c-0532-4f04-bd73-0b3cfcc2df76}</Project>
       <Name>Extensibility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UnityGame\UnityGame.csproj">
+      <Project>{97d1769a-686b-4811-8c3b-3a19d17723ce}</Project>
+      <Name>UnityGame</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -59,6 +63,7 @@
   <PropertyGroup>
     <PostBuildEvent>xcopy /Y "Extensibility.dll" "..\..\..\Unity\Assets\lib"
 xcopy /Y "Algorithms.dll" "..\..\..\Unity\Assets\lib"
-xcopy /Y "Geometry.dll" "..\..\..\Unity\Assets\lib"</PostBuildEvent>
+xcopy /Y "Geometry.dll" "..\..\..\Unity\Assets\lib"
+xcopy /Y "UnityGame.dll" "..\..\..\Unity\Assets\lib"</PostBuildEvent>
   </PropertyGroup>
 </Project>

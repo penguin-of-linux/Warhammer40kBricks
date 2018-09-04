@@ -4,6 +4,7 @@ using Assets;
 using Extensibility;
 using Geometry;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGame;
@@ -44,15 +45,14 @@ public class GraphicsController : MonoBehaviour
             var angle = (float) (unit.Rotation * 180 / Math.PI);
             obj.transform.rotation = Quaternion.Euler(0, -angle, 0);
 
-            //if (unit is Monastery)
-            //    continue;
+            var anim = obj.GetComponentInChildren<Animation>();
+            if (anim == null)
+                continue;
 
-            //var anim = obj.GetComponentInChildren<Animation>();
+            var animationName = unit.State.ToString().ToLower();
 
-            //var animationName = unit.State.ToString().ToLower();
-
-            //if (!anim.IsPlaying(animationName))
-            //    anim.Play(animationName);
+            if (!anim.IsPlaying(animationName))
+                anim.Play(animationName);
         }
     }
 

@@ -11,11 +11,8 @@ namespace Warhammer40kBricks
     {
         public ObjectProvider()
         {
-            //PlayerSettings.stripEngineCode = false;
-            var bundle = AssetBundle.LoadFromFile("Games/Warhammer40kBricks/AssetBundles/warhammerassetbundle");
-            Debug.Log(bundle);
-            _legomanPrefab = bundle.LoadAsset<GameObject>("LegoMan");
-            _monasteryPrefab = bundle.LoadAsset<GameObject>("Monastery");
+            _legomanPrefab = BundleLoader.Bundle.LoadAsset<GameObject>("LegoMan");
+            _monasteryPrefab = BundleLoader.Bundle.LoadAsset<GameObject>("Monastery");
             //myGameObject = (GameObject)Instantiate((GameObject)AssetDatabase.LoadAssetAtPath(
             //"Assets/your/nonResources/path/fileName.prefab",typeof(GameObject)), currentPosition, currentRotation);
         }

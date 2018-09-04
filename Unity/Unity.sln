@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity", "Unity.csproj", "{CF118143-7E37-744F-BE45-3F55345FEC40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary2", "ClassLibrary2\ClassLibrary2.csproj", "{2F4B6F7E-2E44-4FAC-951D-BAC4F589A09F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{CF118143-7E37-744F-BE45-3F55345FEC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF118143-7E37-744F-BE45-3F55345FEC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF118143-7E37-744F-BE45-3F55345FEC40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F4B6F7E-2E44-4FAC-951D-BAC4F589A09F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4B6F7E-2E44-4FAC-951D-BAC4F589A09F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4B6F7E-2E44-4FAC-951D-BAC4F589A09F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4B6F7E-2E44-4FAC-951D-BAC4F589A09F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

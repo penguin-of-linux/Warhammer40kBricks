@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using Assets;
 using Extensibility;
-using Geometry;
-using UnityEditor;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityGame;
@@ -16,7 +13,7 @@ public class GraphicsController : MonoBehaviour
 
     void Start()
     {
-        BuidPanelButtons();
+        BuidPanel();
         DrawMap(Container.GetService<Level>().State.Map);
     }
 
@@ -77,9 +74,12 @@ public class GraphicsController : MonoBehaviour
         plane.AddComponent<PlayerController>().Container = Container;
     }
 
-    private void BuidPanelButtons()
+    private void BuidPanel()
     {
-        var panel = GameObject.Find("ControlPanel");
+        var image = GameObject.Find("ControlPanelImage");
+        var imageComponent = image.GetComponent<Image>();
+        var spriteProvider = Container.GetService<ISpriteProvider>();
+        imageComponent.sprite = spriteProvider.GetSprite("ControlPanelBackground");
     }
 
     private readonly Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();

@@ -12,5 +12,6 @@ namespace UnityGame
         Level CurrentLevel { get; }
         IObjectProvider ObjectProvider { get; }
         IUnitCreator UnitCreator { get; }
+        ISpriteProvider SpriteProvider { get; }
     }
 }

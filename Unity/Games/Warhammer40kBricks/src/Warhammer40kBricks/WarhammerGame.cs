@@ -26,6 +26,11 @@ namespace Warhammer40kBricks
             get { return new UnitCreator(); }
         }
 
+        public ISpriteProvider SpriteProvider
+        {
+            get { return new SpriteProvider(); }
+        }
+
         private Level CreateLevel()
         {
             var map = new Map(100, 100);

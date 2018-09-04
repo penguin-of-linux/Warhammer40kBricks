@@ -5,7 +5,6 @@ using System.IO;
 using Assets;
 using Assets.Container;
 using Extensibility;
-using UnityEditor;
 using UnityEngine;
 using UnityGame;
 
@@ -13,7 +12,6 @@ public class EntryPoint : MonoBehaviour
 {
     void Awake()
     {
-        //PlayerSettings.stripEngineCode = false;
 
         var container = CreateContainer();
 
@@ -46,6 +44,7 @@ public class EntryPoint : MonoBehaviour
         var level = game.CurrentLevel;
         var unitCreator = game.UnitCreator;
         var objectProvider = game.ObjectProvider;
+        var spriteProvider = game.SpriteProvider;
         
         container.RegisterSingleton<Engine>();
         container.RegisterSingleton(gameProvider);
@@ -53,6 +52,7 @@ public class EntryPoint : MonoBehaviour
         container.RegisterSingleton<Level>(level);
         container.RegisterSingleton<IUnitCreator>(unitCreator);
         container.RegisterSingleton<IObjectProvider>(objectProvider);
+        container.RegisterSingleton<ISpriteProvider>(spriteProvider);
 
         return container;
     }

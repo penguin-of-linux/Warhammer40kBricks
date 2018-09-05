@@ -1,24 +1,20 @@
 ﻿using Extensibility;
+using Geometry;
 
 namespace Warhammer40kBricks.Units
 {
-    public class Monastery : BuildingUnit
+    public class Monastery : BuildingUnit, IProducingUnit
     {
         public Monastery(int id) : base(id)
         {
         }
 
-        public override int FramesToProduce
-        {
-            get { return 5; }
-        }
-        public override int Width
-        {
-            get { return 50; }
-        }
-        public override int Height
-        {
-            get { return 50; }
-        }
+        public override string Name => "Monastery";
+        public override int FramesToProduce => 5;
+        public override int Width => 50;
+        public override int Height => 50;
+
+        public Vector2 GetOutputLocation() => new Vector2(0, 0);
+        public string[] GetPossibleUnits() => new[] { "Scout" };
     }
 }

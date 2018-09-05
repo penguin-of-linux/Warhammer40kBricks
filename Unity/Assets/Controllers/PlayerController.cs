@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets;
+using Assets.Container;
 using Extensibility;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
     {
         switch (eventData.pointerPress.transform.name)
         {
-            case "Panel":
+            case "ControlPanel":
                 OnPanelPointerClick(eventData);
                 break;
 
@@ -34,8 +35,10 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         Debug.Log("Unit click");
 
         var id = int.Parse(eventData.pointerPress.transform.name);
+        var unit = Container.GetService<Level>().State.GetUnit(id);
         SelectedUnits.Clear();
-        SelectedUnits.Add(Container.GetService<Level>().State.GetUnit(id));
+        SelectedUnits.Add(unit);
+        Container.GetService<GraphicsController>().UpdateControlPanel(unit);
     }
 
     private void OnGroundPointerClick(PointerEventData eventData)

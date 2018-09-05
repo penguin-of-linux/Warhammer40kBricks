@@ -9,6 +9,7 @@ namespace Tests
         {
         }
 
+        public override string Name => "lalala";
         public Vector2 GetOutputLocation()
         {
             return new Vector2(1, 1);

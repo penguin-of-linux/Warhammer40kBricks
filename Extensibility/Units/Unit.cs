@@ -12,6 +12,7 @@ namespace Extensibility
         public UnitState State { get; internal set; }
         public double Rotation { get; internal set; }
 
+        public abstract string Name { get; }
         public abstract int FramesToProduce { get; }
 
         public int? EnemyId { get; internal set; }

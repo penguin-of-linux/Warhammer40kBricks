@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets;
 using Extensibility;
 using UnityEngine;
@@ -74,13 +75,41 @@ public class GraphicsController : MonoBehaviour
         plane.AddComponent<PlayerController>().Container = Container;
     }
 
+    public void UpdateControlPanel(Unit selectedUnit)
+    {
+        var producingUnit = selectedUnit as IProducingUnit;
+        if (producingUnit != null)
+        {
+            var possibleUnits = producingUnit.GetPossibleUnits();
+            var minLen = Math.Min(possibleUnits.Length, _buttons.Length);
+            var maxLen = Math.Max(possibleUnits.Length, _buttons.Length);
+
+            for (var i = 0; i < minLen; i++)
+            {
+                var text = _buttons[i].GetComponentInChildren<Text>();
+                text.text = possibleUnits[i];
+            }
+
+            for (var i = minLen; i < maxLen; i++)
+            {
+                var text = _buttons[i].GetComponentInChildren<Text>();
+                text.text = "NONE";
+            }
+        }
+    }
+
     private void BuidPanel()
     {
         var image = GameObject.Find("ControlPanelImage");
         var imageComponent = image.GetComponent<Image>();
         var spriteProvider = Container.GetService<ISpriteProvider>();
         imageComponent.sprite = spriteProvider.GetSprite("ControlPanelBackground");
+
+        _buttons = Enumerable.Range(1, 2)
+            .Select(x => GameObject.Find("ControlPanelButton" + x).GetComponent<Button>())
+            .ToArray();
     }
 
     private readonly Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
+    private Button[] _buttons;
 }

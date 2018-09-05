@@ -25,14 +25,14 @@ public class EntryPoint : MonoBehaviour
 
     private void ConfigureGraphicsController(IServiceProvider container)
     {
-        var controller = GameObject.Find("GraphicsController").GetComponent<GraphicsController>();
+        var controller = container.GetService<GraphicsController>();
         controller.Container = container;
         controller.enabled = true;
     }
 
     private void ConfigureGameController(IServiceProvider container)
     {
-        var controller = GameObject.Find("GameController").GetComponent<GameController>();
+        var controller = container.GetService<GameController>();
         controller.Container = container;
     }
 
@@ -45,7 +45,9 @@ public class EntryPoint : MonoBehaviour
         var unitCreator = game.UnitCreator;
         var objectProvider = game.ObjectProvider;
         var spriteProvider = game.SpriteProvider;
-        
+        var graphicsController = GameObject.Find("GraphicsController").GetComponent<GraphicsController>();
+        var gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
         container.RegisterSingleton<Engine>();
         container.RegisterSingleton(gameProvider);
         container.RegisterSingleton<IUnityGame>(game);
@@ -53,6 +55,8 @@ public class EntryPoint : MonoBehaviour
         container.RegisterSingleton<IUnitCreator>(unitCreator);
         container.RegisterSingleton<IObjectProvider>(objectProvider);
         container.RegisterSingleton<ISpriteProvider>(spriteProvider);
+        container.RegisterSingleton<GameController>(gameController);
+        container.RegisterSingleton<GraphicsController>(graphicsController);
 
         return container;
     }

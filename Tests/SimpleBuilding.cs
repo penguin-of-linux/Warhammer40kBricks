@@ -8,6 +8,7 @@ namespace Tests
         {
         }
 
+        public override string Name => "lalala";
         public override int Width => 50;
         public override int Height => 50;
         public override int FramesToProduce => 100;

@@ -8,17 +8,9 @@ namespace Warhammer40kBricks.Units
         {
         }
 
-        public override int FramesToProduce
-        {
-            get { return 5; }
-        }
-        public override double Speed
-        {
-            get { return 1; }
-        }
-        public override double RotationSpeed
-        {
-            get { return 1; }
-        }
+        public override string Name => "Scout";
+        public override int FramesToProduce => 5;
+        public override double Speed => 1;
+        public override double RotationSpeed => 1;
     }
 }

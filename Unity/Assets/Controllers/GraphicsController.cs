@@ -78,23 +78,24 @@ public class GraphicsController : MonoBehaviour
     public void UpdateControlPanel(Unit selectedUnit)
     {
         var producingUnit = selectedUnit as IProducingUnit;
+        var usedButtons = 0;
+
         if (producingUnit != null)
         {
             var possibleUnits = producingUnit.GetPossibleUnits();
-            var minLen = Math.Min(possibleUnits.Length, _buttons.Length);
-            var maxLen = Math.Max(possibleUnits.Length, _buttons.Length);
+            usedButtons = Math.Min(possibleUnits.Length, _buttons.Length);
 
-            for (var i = 0; i < minLen; i++)
+            for (var i = 0; i < usedButtons; i++)
             {
                 var text = _buttons[i].GetComponentInChildren<Text>();
                 text.text = possibleUnits[i];
             }
+        }
 
-            for (var i = minLen; i < maxLen; i++)
-            {
-                var text = _buttons[i].GetComponentInChildren<Text>();
-                text.text = "NONE";
-            }
+        for (var i = usedButtons; i < _buttons.Length; i++)
+        {
+            var text = _buttons[i].GetComponentInChildren<Text>();
+            text.text = "NONE";
         }
     }
 
@@ -108,6 +109,7 @@ public class GraphicsController : MonoBehaviour
         _buttons = Enumerable.Range(1, 2)
             .Select(x => GameObject.Find("ControlPanelButton" + x).GetComponent<Button>())
             .ToArray();
+        UpdateControlPanel(null);
     }
 
     private readonly Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();

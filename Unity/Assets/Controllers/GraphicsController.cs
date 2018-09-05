@@ -89,6 +89,7 @@ public class GraphicsController : MonoBehaviour
             {
                 var text = _buttons[i].GetComponentInChildren<Text>();
                 text.text = possibleUnits[i];
+                _buttons[i].onClick.AddListener(() => ProduceUnit(selectedUnit, text.text));
             }
         }
 
@@ -106,10 +107,19 @@ public class GraphicsController : MonoBehaviour
         var spriteProvider = Container.GetService<ISpriteProvider>();
         imageComponent.sprite = spriteProvider.GetSprite("ControlPanelBackground");
 
-        _buttons = Enumerable.Range(1, 2)
+        var buttonsLength = 2;
+
+        _buttons = Enumerable.Range(1, buttonsLength)
             .Select(x => GameObject.Find("ControlPanelButton" + x).GetComponent<Button>())
             .ToArray();
+
         UpdateControlPanel(null);
+    }
+
+    private void ProduceUnit(Unit unit, string unityType)
+    {
+        var engine = Container.GetService<Engine>();
+        engine.ProduceUnit(unit, unityType);
     }
 
     private readonly Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();

@@ -13,6 +13,9 @@ namespace Extensibility
         /// </summary>
         public void ProduceUnit(Unit unit, string unitType)
         {
+            if (unit == null)
+                throw new ArgumentException(nameof(unit));
+
             if (!(unit is IProducingUnit producingUnit))
                 throw new ArgumentException($"Unit with {unit.Id} is not IProducingUnit");
 

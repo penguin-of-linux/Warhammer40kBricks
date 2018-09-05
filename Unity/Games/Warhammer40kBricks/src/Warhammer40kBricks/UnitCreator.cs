@@ -1,4 +1,5 @@
-﻿using Extensibility;
+﻿using System;
+using Extensibility;
 using Warhammer40kBricks.Units;
 
 namespace Warhammer40kBricks
@@ -9,7 +10,17 @@ namespace Warhammer40kBricks
 
         public Unit CreateUnit(string unitName)
         {
-            return new Scout(_гыыыыыы++);
+            switch (unitName)
+            {
+                case "Scout":
+                    return new Scout(_гыыыыыы++);
+
+                case "Monastery":
+                    return new Monastery(_гыыыыыы++);
+
+                default:
+                    throw new ArgumentException("Unknown unit type: + + unitType");
+            }
         }
     }
 }

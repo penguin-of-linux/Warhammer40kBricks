@@ -96,12 +96,12 @@ public class CameraController : MonoBehaviour
         else if (Input.GetKey(RotCamYKey1)) _camRotationY += RotationSpeedChange;
         _camRotationY = Mathf.Clamp(_camRotationY, 0, YRotationLimit);
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             if (_height < MaxHeight) _tempHeight += HeightSpeedChange;
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             if (_height > MinHeight) _tempHeight -= HeightSpeedChange;
         }

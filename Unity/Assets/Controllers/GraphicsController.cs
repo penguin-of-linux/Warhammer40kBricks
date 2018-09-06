@@ -77,6 +77,11 @@ public class GraphicsController : MonoBehaviour
 
     public void UpdateControlPanel(Unit selectedUnit)
     {
+        foreach (var button in _buttons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+
         var producingUnit = selectedUnit as IProducingUnit;
         var usedButtons = 0;
 
@@ -107,7 +112,7 @@ public class GraphicsController : MonoBehaviour
         var spriteProvider = Container.GetService<ISpriteProvider>();
         imageComponent.sprite = spriteProvider.GetSprite("ControlPanelBackground");
 
-        var buttonsLength = 2;
+        var buttonsLength = 8;
 
         _buttons = Enumerable.Range(1, buttonsLength)
             .Select(x => GameObject.Find("ControlPanelButton" + x).GetComponent<Button>())

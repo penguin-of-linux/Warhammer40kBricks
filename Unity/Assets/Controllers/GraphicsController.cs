@@ -22,11 +22,10 @@ public class GraphicsController : MonoBehaviour
     {
         var state = Container.GetService<Level>().State;
 
+        UpdateGameObjects(state);
+
         foreach (var unit in state.Units)
         {
-            if (!_objects.ContainsKey(unit.Id))
-                _objects[unit.Id] = CreateGameObject(unit);
-
             var obj = _objects[unit.Id];
 
             if (unit is IBuildingUnit)
@@ -52,15 +51,6 @@ public class GraphicsController : MonoBehaviour
             if (!anim.IsPlaying(animationName))
                 anim.Play(animationName);
         }
-    }
-
-    private GameObject CreateGameObject(Unit unit)
-    {
-        var result = Container.GetService<IObjectProvider>().CreateGameObject(unit);
-        var controller = result.AddComponent<PlayerController>();
-        controller.Container = Container;
-
-        return result;
     }
 
     public void DrawMap(Map map)
@@ -103,6 +93,31 @@ public class GraphicsController : MonoBehaviour
             var text = _buttons[i].GetComponentInChildren<Text>();
             text.text = "NONE";
         }
+    }
+
+    private void UpdateGameObjects(GameState state)
+    {
+        foreach (var unit in state.Units)
+        {
+            if (!_objects.ContainsKey(unit.Id))
+                _objects[unit.Id] = CreateGameObject(unit);
+        }
+
+        // todo n^n -> n
+        foreach (var kvp in _objects)
+        {
+            if (!state.Units.Select(x => x.Id).Contains(kvp.Key))
+                Destroy(kvp.Value);
+        }
+    }
+
+    private GameObject CreateGameObject(Unit unit)
+    {
+        var result = Container.GetService<IObjectProvider>().CreateGameObject(unit);
+        var controller = result.AddComponent<PlayerController>();
+        controller.Container = Container;
+
+        return result;
     }
 
     private void BuidPanel()

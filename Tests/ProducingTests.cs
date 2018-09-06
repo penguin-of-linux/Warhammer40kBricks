@@ -10,7 +10,7 @@ namespace Tests
         public void Simple()
         {
             var producing = UnitCreator.CreateUnit("simple producing unit");
-            State.AddUnit(producing, new Vector2(0, 0), 100);
+            State.AddUnit(producing, new Vector2(0, 0));
 
             Engine.ProduceUnit(producing, "simple combat unit");
             FullUpdate();

@@ -11,8 +11,8 @@ namespace Tests
         {
             var attacker = new SimpleCombatUnit(0);
             var victim = new SimpleBuildingUnit(1);
-            State.AddUnit(attacker,  new Vector2(0, 0), 100);
-            State.AddUnit(victim, new Vector2(0.5, 0.5) * attacker.FireRadius, 100);
+            State.AddUnit(attacker,  new Vector2(0, 0));
+            State.AddUnit(victim, new Vector2(0.5, 0.5) * attacker.FireRadius);
 
             Engine.SetUnitAttacking(State, attacker, victim);
 
@@ -28,8 +28,8 @@ namespace Tests
             var victim = new SimpleBuildingUnit(1);
             var attackerStartPos = new Vector2(0, 0);
             var buildingPos = new Vector2(2, 2) * attacker.FireRadius;
-            State.AddUnit(attacker, attackerStartPos, 100);
-            State.AddUnit(victim, buildingPos, 100);
+            State.AddUnit(attacker, attackerStartPos);
+            State.AddUnit(victim, buildingPos);
 
             Engine.SetUnitAttacking(State, attacker, victim);
 
@@ -44,8 +44,8 @@ namespace Tests
             var victim = new SimpleBuildingUnit(1);
             var attackerStartPos = new Vector2(0, 0);
             var buildingPos = new Vector2(2, 2) * attacker.FireRadius;
-            State.AddUnit(attacker, attackerStartPos, 100);
-            State.AddUnit(victim, buildingPos, 100);
+            State.AddUnit(attacker, attackerStartPos);
+            State.AddUnit(victim, buildingPos);
 
             Engine.SetUnitAttacking(State, attacker, victim);
             FullUpdate();

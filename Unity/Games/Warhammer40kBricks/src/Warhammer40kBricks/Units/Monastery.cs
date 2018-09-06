@@ -10,6 +10,7 @@ namespace Warhammer40kBricks.Units
         }
 
         public override string Name => "Monastery";
+        public override int MaxHeal => 100;
         public override int FramesToProduce => 5;
         public override int Width => 50;
         public override int Height => 50;

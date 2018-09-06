@@ -22,7 +22,10 @@ namespace Extensibility
             if (!producingUnit.GetPossibleUnits().Contains(unitType))
                 throw new ArgumentException($"Unit with {unit.Id} id can not create {unitType} unit");
 
-            unit.UnitsToProduce.Enqueue(_unitCreator.CreateUnit(unitType));
+            var unitToProduce = _unitCreator.CreateUnit(unitType);
+            unitToProduce.Team = unit.Team;
+
+            unit.UnitsToProduce.Enqueue(unitToProduce);
         }
 
         /// <summary>
@@ -51,7 +54,6 @@ namespace Extensibility
         /// </summary>
         public void SetUnitMovingTo(GameState state, Unit unit, Vector2 target)
         {
-
             if (!(unit is IMovableUnit))
                 throw new ArgumentException($"Unit with {unit.Id} is not IMovableUnit");
 

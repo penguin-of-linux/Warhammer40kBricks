@@ -40,11 +40,11 @@ namespace Extensibility
                     unit.Position + new Vector2(building.Width, building.Height)));
         }
 
-        public void AddUnit(Unit unit, Vector2 position, int heal)
+        public void AddUnit(Unit unit, Vector2 position)
         {
             Units.Add(unit);
+
             unit.Position = position;
-            unit.Heal = heal;
             unit.State = UnitState.Idle;
             unit.EnemyId = null;
             unit.MovingTargets = new Queue<Vector2>();

@@ -40,7 +40,7 @@ namespace Extensibility
 
                 if (unit.ProduceCounter >= unitToProduce.FramesToProduce)
                 {
-                    state.AddUnit(unit.UnitsToProduce.Dequeue(), producing.GetOutputLocation(), 100);
+                    state.AddUnit(unit.UnitsToProduce.Dequeue(), producing.GetOutputLocation());
                     unit.ProduceCounter = 0;
                 }
                 else

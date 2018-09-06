@@ -35,10 +35,23 @@ public class PlayerController : MonoBehaviour, IPointerClickHandler
         Debug.Log("Unit click");
 
         var id = int.Parse(eventData.pointerPress.transform.name);
-        var unit = Container.GetService<Level>().State.GetUnit(id);
-        SelectedUnits.Clear();
-        SelectedUnits.Add(unit);
-        Container.GetService<GraphicsController>().UpdateControlPanel(unit);
+        var clickedUnit = Container.GetService<Level>().State.GetUnit(id);
+
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            SelectedUnits.Clear();
+            SelectedUnits.Add(clickedUnit);
+            Container.GetService<GraphicsController>().UpdateControlPanel(clickedUnit);
+        }
+
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            var engine = Container.GetService<Engine>();
+            var state = Container.GetService<Level>().State;
+
+            foreach (var selected in SelectedUnits)
+                engine.SetUnitAttacking(state, selected, clickedUnit);
+        }
     }
 
     private void OnGroundPointerClick(PointerEventData eventData)

@@ -11,7 +11,7 @@ namespace Tests
         public void Simple()
         {
             var unit = new SimpleMovableUnit(0);
-            State.AddUnit(unit, new Vector2(0, 0), 100);
+            State.AddUnit(unit, new Vector2(0, 0));
             var start = new Vector2(0, 0);
             var finish = new Vector2(100, 100);
 
@@ -28,8 +28,8 @@ namespace Tests
             var unit = new SimpleMovableUnit(0);
             var building = new SimpleBuildingUnit(1);
             var start = new Vector2(0, 0);
-            State.AddUnit(unit, start, 100);
-            State.AddUnit(building, new Vector2(25, 25), 100);
+            State.AddUnit(unit, start);
+            State.AddUnit(building, new Vector2(25, 25));
             var finish = new Vector2(100, 100);
 
             Engine.SetUnitMovingTo(State, unit, finish);

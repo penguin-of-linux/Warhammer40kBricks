@@ -18,9 +18,9 @@ namespace Warhammer40kBricks
             var gameState = new GameState(map);
 
             for (int i = 0; i < 1; i++)
-                gameState.AddUnit(UnitCreator.CreateUnit("Scout"), new Geometry.Vector2(1, 1 * i), 100);
+                gameState.AddUnit(UnitCreator.CreateUnit("Scout"), new Geometry.Vector2(1, 1 * i));
 
-            gameState.AddUnit(UnitCreator.CreateUnit("Monastery"), new Geometry.Vector2(25, 25), 100);
+            gameState.AddUnit(UnitCreator.CreateUnit("Monastery"), new Geometry.Vector2(25, 25));
 
             return new Level(map, gameState);
         }

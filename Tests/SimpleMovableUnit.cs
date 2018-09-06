@@ -9,6 +9,7 @@ namespace Tests
         }
 
         public override string Name => "lalala";
+        public override int MaxHeal => 100;
         public override double Speed => 5;
         public override double RotationSpeed => 0.01;
         public override int FramesToProduce => 100;

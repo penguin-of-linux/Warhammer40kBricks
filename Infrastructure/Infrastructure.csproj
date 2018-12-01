@@ -52,7 +52,7 @@
       <Name>Extensibility</Name>
     </ProjectReference>
     <ProjectReference Include="..\UnityGame\UnityGame.csproj">
-      <Project>{97d1769a-686b-4811-8c3b-3a19d17723ce}</Project>
+      <Project>{8992e757-5a61-42a7-b830-38c627b75e39}</Project>
       <Name>UnityGame</Name>
     </ProjectReference>
   </ItemGroup>

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C3C5ACBF-7700-4E05-9BE6-B7B83390BA1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityGame", "UnityGame\UnityGame.csproj", "{97D1769A-686B-4811-8C3B-3A19D17723CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityGame", "UnityGame\UnityGame.csproj", "{8992E757-5A61-42A7-B830-38C627B75E39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{C3C5ACBF-7700-4E05-9BE6-B7B83390BA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3C5ACBF-7700-4E05-9BE6-B7B83390BA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3C5ACBF-7700-4E05-9BE6-B7B83390BA1C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97D1769A-686B-4811-8C3B-3A19D17723CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97D1769A-686B-4811-8C3B-3A19D17723CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97D1769A-686B-4811-8C3B-3A19D17723CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97D1769A-686B-4811-8C3B-3A19D17723CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8992E757-5A61-42A7-B830-38C627B75E39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8992E757-5A61-42A7-B830-38C627B75E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8992E757-5A61-42A7-B830-38C627B75E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8992E757-5A61-42A7-B830-38C627B75E39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
